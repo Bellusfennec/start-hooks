@@ -4,22 +4,25 @@ import SmallTitle from "../../common/typografy/smallTitle";
 import Divider from "../../common/divider";
 
 const PrevStateExample = () => {
-    const renderCount = useRef(0);
-    const [otherState, setOtherState] = useState(false);
+    const prevState = useRef("");
+    const [otherState, setOtherState] = useState("false");
 
     const toggleOtherState = () => {
-        setOtherState(!otherState);
+        setOtherState((prevState) =>
+            prevState === "false" ? "true" : "false"
+        );
     };
 
     useEffect(() => {
-        renderCount.current++;
-    });
+        prevState.current = otherState;
+    }, [otherState]);
 
     return (
         <CardWrapper>
             <SmallTitle>Предыдущее состояние</SmallTitle>
             <Divider />
-            <p>render count: {renderCount.current}</p>
+            <p>prev State: {prevState.current}</p>
+            <p>current State: {otherState}</p>
             <button className="btn btn-primary" onClick={toggleOtherState}>
                 Toggle other state
             </button>
