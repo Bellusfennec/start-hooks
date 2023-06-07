@@ -30,7 +30,6 @@ Component.propTypes = {
 
 const ComponentsList = ({ children }) => {
     return React.Children.map(children, (child, i) => {
-        console.log(child);
         const config = {
             ...child.props,
             number: i + 1

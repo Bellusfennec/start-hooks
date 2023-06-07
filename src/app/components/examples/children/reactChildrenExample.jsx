@@ -12,10 +12,6 @@ const FormComponent = ({ children }) => {
         setData((prevState) => ({ ...prevState, [target.name]: target.value }));
     };
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     return React.Children.map(children, (child) => {
         const config = {
             ...child.props,
